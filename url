@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+ 
+int decode(const char *s, char *dec)
+{
+	char *o;
+	const char *end = s + strlen(s);
+	int c;
+ 
+	for (o = dec; s <= end; o++) {
+		c = *s++;
+		if(c=='%'){
+			c = *s++;
+			if(c=='3'){
+				c = *s++;
+				if(c=='A'){
+					// code to add ?
+				}
+				else if(c=='D'){
+					// code to add :
+				}
+			}
+			else if(c=='2'){
+				c = *s++;
+				if(c=='0'){
+					// code to add empty string
+				}
+			}
+		}
+
+ 
+		if (dec) *o = c;
+	}
+ 
+	return o - dec; //length
+}
+ 
+int main()
+{
+	//const char *url = "http%3A%2F%2ffoo+bar%2fabcd";
+	const char *url = "cr%3Aaller%20zne%3De.jpg";
+	//cr?allerzne:e.jpg
+
+	char out[strlen(url) + 1];
+ 
+	printf("length: %d\n", decode(url, 0));
+	puts(decode(url, out) < 0 ? "bad string" : out);
+ 
+	return 0;
+}
