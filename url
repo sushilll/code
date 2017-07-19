@@ -14,16 +14,17 @@ int decode(const char *s, char *dec)
 			if(c=='3'){
 				c = *s++;
 				if(c=='A'){
-					// code to add ?
+					c='?';// code to add ?
 				}
 				else if(c=='D'){
-					// code to add :
+					c=':';// code to add :
 				}
 			}
 			else if(c=='2'){
 				c = *s++;
 				if(c=='0'){
-					// code to add empty string
+					o--;
+					continue;// code to add empty string
 				}
 			}
 		}
